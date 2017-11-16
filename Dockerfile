@@ -6,7 +6,7 @@ ENV GOPATH=/work
 ENV PATH=${GOPATH}/bin:/google-cloud-sdk/bin:/google-cloud-sdk/platform/google_appengine:$PATH
 
 RUN apk update \
- && apk add ca-certificates wget \
+ && apk add ca-certificates wget git \
  && update-ca-certificates
 
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
