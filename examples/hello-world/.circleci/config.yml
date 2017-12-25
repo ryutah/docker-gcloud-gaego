@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ryutah/gcloud-gaego
+
+    working_directory: /work/src/hello-world
+    steps:
+      - checkout
+      - run:
+          name: Generate Deploy Service Account Key File
+          command: echo $GOOGLE_AUTH > /key.json
+      - run:
+          name: Activate Service Account
+          command: gcloud auth activate-service-account --key-file /key.json
+      - run:
+          name: Run test
+          command: goapp test .
+      - run:
+          name: Deploy Application
+          command: appcfg.py update --application $PROJECT_ID --version 1 --oauth2_access_token $(gcloud auth print-access-token 2> /dev/null) .
