@@ -1,15 +1,15 @@
-FROM golang:1.9-alpine
-
-ARG GCLOUD_SDK_VERSION=180.0.0
+FROM golang:1.9.2-alpine3.7
 
 ENV GOPATH=/work
 ENV PATH=${GOPATH}/bin:/google-cloud-sdk/bin:/google-cloud-sdk/platform/google_appengine:$PATH
 
 RUN apk update \
- && apk add ca-certificates wget git make python2=2.7.13-r1 \
+ && apk add ca-certificates wget git make python2 \
  && update-ca-certificates
 
 WORKDIR /
+
+ARG GCLOUD_SDK_VERSION=183.0.0
 
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
  && tar xvf google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
