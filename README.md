@@ -16,7 +16,7 @@
 
 
 # Examples
-* [hello-world](examples/hello-world)
+* [hello-world](https://github.com/ryutah/docker-gcloud-gaego/tree/master/examples/hello-world)
 
 
 # The Others
