@@ -15,6 +15,10 @@
 | GOPATH | /work |
 
 
+# Examples
+* [hello-world](examples/hello-world)
+
+
 # The Others
 * Working directory
   - /work
