@@ -33,3 +33,16 @@ $ ./test.sh
   $ export PROJECT_ID={YOUR_PROJECT_ID}
   $ circleci build -e GOOGLE_AUTH=$GOOGLE_AUTH -e PROJECT_ID=$PROJECT_ID
   ```
+
+
+### Run build by Google Cloud Container Builder
+#### Settings
+1. Enable Google Cloud Container Builder on GCP Console
+2. Add appengine deploy role to container builder service account.(`{YOUR_PROJECT_NUMBER}@cloudbuild.gserviceaccount.com`)
+
+#### Running Build
+1. Install Google Cloud SDK
+2. Run below command.  
+  ```console
+  $ gcloud container builds submit --config gccb/cloudbuild.yaml .
+  ```

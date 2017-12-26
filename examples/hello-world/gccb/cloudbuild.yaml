@@ -1,0 +1,6 @@
+steps:
+  - name: 'ryutah/gcloud-gaego'
+    env:
+      - 'PROJECT_ID=$PROJECT_ID'
+    args:
+      - 'gccb/entry.sh'
