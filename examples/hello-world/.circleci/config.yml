@@ -15,7 +15,7 @@ jobs:
           command: gcloud auth activate-service-account --key-file /key.json
       - run:
           name: Run test
-          command: goapp test .
+          command: go test .
       - run:
           name: Deploy Application
           command: appcfg.py update --application $PROJECT_ID --version 1 --oauth2_access_token $(gcloud auth print-access-token 2> /dev/null) .

@@ -1,4 +1,4 @@
-FROM golang:1.9.2-alpine3.7
+FROM golang:1.9.4-alpine3.7
 
 ENV GOPATH=/work
 ENV PATH=${GOPATH}/bin:/google-cloud-sdk/bin:/google-cloud-sdk/platform/google_appengine:$PATH
@@ -9,7 +9,7 @@ RUN apk update \
 
 WORKDIR /
 
-ARG GCLOUD_SDK_VERSION=189.0.0
+ARG GCLOUD_SDK_VERSION=191.0.0
 
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
  && tar xvf google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
@@ -17,10 +17,10 @@ RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud
  && rm google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz
 
 RUN google-cloud-sdk/bin/gcloud --quiet components install app-engine-go \
- && chmod +x /google-cloud-sdk/platform/google_appengine/appcfg.py \
- && chmod +x /google-cloud-sdk/platform/google_appengine/goapp
+ && chmod +x /google-cloud-sdk/platform/google_appengine/appcfg.py
 
 ADD https://github.com/golang/go/raw/master/lib/time/zoneinfo.zip /google-cloud-sdk/platform/google_appengine/goroot-1.8/lib/time/zoneinfo.zip
+ADD https://github.com/golang/go/raw/master/lib/time/zoneinfo.zip /google-cloud-sdk/platform/google_appengine/goroot-1.9/lib/time/zoneinfo.zip
 
 WORKDIR /work
 
