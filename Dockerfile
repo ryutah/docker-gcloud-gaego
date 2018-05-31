@@ -9,7 +9,7 @@ RUN apk update \
 
 WORKDIR /
 
-ARG GCLOUD_SDK_VERSION=202.0.0
+ARG GCLOUD_SDK_VERSION=203.0.0
 
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
  && tar xvf google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
